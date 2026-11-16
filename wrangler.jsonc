@@ -8,6 +8,9 @@
   "compatibility_date": "2026-11-16",
   "compatibility_flags": ["nodejs_compat"],
   "upload_source_maps": true,
+  // Reach the app only through the custom domain behind Cloudflare Access.
+  "workers_dev": false,
+  "preview_urls": false,
   "assets": {
     // `npm run build:worker` writes the Vite client here, plus a `_headers` file.
     "directory": "./dist/client",

@@ -1,0 +1,30 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "better-vault",
+  "main": "worker/index.ts",
+  // Node.js built-ins the API imports (crypto, dns, net, fs, http, process.env)
+  // are enabled by this date. The flag records that dependency; Wrangler treats
+  // it as already covered by dates on or after 2026-08-04.
+  "compatibility_date": "2026-11-16",
+  "compatibility_flags": ["nodejs_compat"],
+  "upload_source_maps": true,
+  "assets": {
+    // `npm run build:worker` writes the Vite client here, plus a `_headers` file.
+    "directory": "./dist/client",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    // API paths are not files. Without this, the SPA fallback would return index.html.
+    "run_worker_first": ["/api/*"],
+  },
+  "vars": {
+    // Ollama and LM Studio would make the Worker fetch addresses the visitor chooses.
+    "BETTER_VAULT_ALLOW_LOCAL_PROVIDERS": "false",
+    // Web-page and calendar fetches must not reach private or link-local addresses.
+    "BETTER_VAULT_ALLOW_PRIVATE_URLS": "false",
+  },
+  "observability": {
+    "enabled": true,
+    "logs": { "enabled": true, "head_sampling_rate": 1 },
+    "traces": { "enabled": true, "head_sampling_rate": 1 },
+  },
+}

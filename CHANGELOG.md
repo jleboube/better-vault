@@ -5,6 +5,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+### Added
+
+- Cloudflare Worker deployment for a private single-user web app. `npm run build:worker` builds the page, and `npm run deploy:worker` publishes it with the API. See [DEPLOY-CLOUDFLARE.md](DEPLOY-CLOUDFLARE.md).
+
 ## [0.7.0] - 2026-11-10
 
 ### Added

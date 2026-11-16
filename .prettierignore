@@ -5,6 +5,8 @@ components/kloq/
 studio/tools/anatomy/kit/
 package-lock.json
 dist/
+dist-worker/
+.wrangler/
 node_modules/
 coverage/
 public/

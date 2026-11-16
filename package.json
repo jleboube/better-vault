@@ -20,6 +20,8 @@
     "dev": "vite",
     "build": "vite build && vite build --ssr server/node.ts --outDir dist/server --emptyOutDir",
     "start": "node dist/server/node.js",
+    "build:worker": "vite build && node scripts/worker-headers.mjs",
+    "deploy:worker": "wrangler deploy",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
@@ -118,7 +120,8 @@
     "typescript": "^5",
     "typescript-eslint": "^8.72.1",
     "vite": "^8.3.5",
-    "vitest": "^5.0.5"
+    "vitest": "^5.0.5",
+    "wrangler": "^4.163.0"
   },
   "overrides": {
     "image-size": "^2.0.4"
